@@ -64,9 +64,10 @@ int BitMapSet(BitMap_t *b, int bitposition) {
        //initialize newly allocated memory block because realloc will return uninitialize memory for extended memory size
        newMemBlockLength = (b->actualLength - byteIndex);
 
-       memset(temp+newMemBlockLength, 0, newMemBlockLength);
+       memset(temp+newMemBlockLength, 0, (newMemBlockLength * sizeof(int)));
 
        b->bitmap = temp;
+       printf("Memory dynamically extended: new dynamic Array size : %ldB\n\n\r", (b->actualLength * sizeof(int)));
        
    }
 
